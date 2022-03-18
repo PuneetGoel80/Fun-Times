@@ -1,6 +1,7 @@
 package com.ford.exercise.shopping;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Function;
@@ -42,7 +43,8 @@ public class DiscountRepository {
 
         LocalDate today = LocalDate.now();
         LocalDate validFromDate = today.plus(3, DAYS);
-        LocalDate validToDate = today.plus(validFromDate.lengthOfMonth(), DAYS);
+
+        LocalDate validToDate = today.plus(validFromDate.lengthOfMonth() - today.getDayOfMonth(), DAYS);
 
      return new Discount(validFromDate,
                 validToDate,
